@@ -7,8 +7,6 @@ import traceback
 import numpy
 import detoxify
 
-from django.conf import settings
-
 class NumpyEncoder(json.JSONEncoder):
     """ Special json encoder for numpy types """
     def default(self, obj): # pylint: disable=arguments-renamed
@@ -44,8 +42,8 @@ def moderate(request, moderator):
 
             if results['toxicity'] < toxicity_threshold:
                 return (True, metadata)
-            else:
-                return (False, metadata)
+
+            return (False, metadata)
 
     except: # pylint: disable=bare-except
         logger.error('simple_moderation_detoxify.moderate ERROR: %s', traceback.format_exc())
