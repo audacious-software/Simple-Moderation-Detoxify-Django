@@ -8,12 +8,6 @@ import numpy
 import detoxify
 
 from django.conf import settings
-from django.contrib.auth import get_user_model
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
-from django.utils import timezone
-
-from .models import ModerationDecision
 
 class NumpyEncoder(json.JSONEncoder):
     """ Special json encoder for numpy types """
@@ -32,7 +26,7 @@ class NumpyEncoder(json.JSONEncoder):
 def moderate(request, moderator):
     logger = logging.getLogger()
 
-    logger.warning('simple_moderation.moderate: %s -- %s', request, moderator)
+    logger.warning('simple_moderation_detoxify.moderate: %s -- %s', request, moderator)
 
     try:
         if moderator.moderator_id.startswith('detoxify:'):
@@ -40,21 +34,20 @@ def moderate(request, moderator):
 
             results = detoxify.Detoxify(model_name).predict(request.message)
 
-            logger.warning('simple_moderation.moderate.detoxify: %s -- %s -- %s', request, moderator, results)
+            logger.warning('simple_moderation_detoxify.moderate.detoxify: %s -- %s -- %s', request, moderator, results)
 
-            decision = ModerationDecision(request=request, when=timezone.now())
+            json_string = json.dumps(results, indent=2, cls=NumpyEncoder)
 
-            if results['toxicity'] < settings.SIMPLE_MODERATION_DETOXIFY_THRESHOLD:
-                decision.approved = True
+            metadata = json.loads(json_string)
+
+            toxicity_threshold = moderator.metadata.get('toxicity_threshold', 0.5)
+
+            if results['toxicity'] < toxicity_threshold:
+                return (True, metadata)
             else:
-                decision.approved = False
+                return (False, metadata)
 
-            decision.decision_maker = moderator.moderator_id
-
-            decision.metadata = json.dumps(results, indent=2, cls=NumpyEncoder)
-
-            decision.save()
     except: # pylint: disable=bare-except
-        logger.error('simple_moderation.moderate ERROR: %s', traceback.format_exc())
+        logger.error('simple_moderation_detoxify.moderate ERROR: %s', traceback.format_exc())
 
     return (None, None)
