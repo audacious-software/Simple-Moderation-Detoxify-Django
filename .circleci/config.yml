@@ -46,7 +46,7 @@ jobs:
             git clone https://github.com/audacious-software/Django-Dialog-Engine.git django_dialog_engine
             git clone https://github.com/audacious-software/Django-Dialog-Engine-Builder.git django_dialog_engine_builder
             git clone https://github.com/audacious-software/Simple-Moderation-Django.git simple_moderation
-            pip install -r simple_moderation_detoxify/requirements.txt simple_moderation/requirements.txt -r quicksilver/requirements.txt -r django_dialog_engine_builder/requirements.txt -r django_dialog_engine/requirements.txt
+            pip install -r simple_moderation_detoxify/requirements.txt -r simple_moderation/requirements.txt -r quicksilver/requirements.txt -r django_dialog_engine_builder/requirements.txt -r django_dialog_engine/requirements.txt
             echo "Starting Django project..."
             django-admin startproject sm
             echo "Copying over packages..."
@@ -111,7 +111,7 @@ jobs:
             git clone https://github.com/audacious-software/Django-Dialog-Engine.git django_dialog_engine
             git clone https://github.com/audacious-software/Django-Dialog-Engine-Builder.git django_dialog_engine_builder
             git clone https://github.com/audacious-software/Simple-Moderation-Django.git simple_moderation
-            pip install -r simple_moderation_detoxify/requirements.txt simple_moderation/requirements.txt -r quicksilver/requirements.txt -r django_dialog_engine_builder/requirements.txt -r django_dialog_engine/requirements.txt
+            pip install -r simple_moderation_detoxify/requirements.txt -r simple_moderation/requirements.txt -r quicksilver/requirements.txt -r django_dialog_engine_builder/requirements.txt -r django_dialog_engine/requirements.txt
             echo "Starting Django project..."
             django-admin startproject sm
             echo "Copying over packages..."
@@ -175,7 +175,7 @@ jobs:
             git clone https://github.com/audacious-software/Django-Dialog-Engine.git django_dialog_engine
             git clone https://github.com/audacious-software/Django-Dialog-Engine-Builder.git django_dialog_engine_builder
             git clone https://github.com/audacious-software/Simple-Moderation-Django.git simple_moderation
-            pip install -r simple_moderation_detoxify/requirements.txt simple_moderation/requirements.txt -r quicksilver/requirements.txt -r django_dialog_engine_builder/requirements.txt -r django_dialog_engine/requirements.txt
+            pip install -r simple_moderation_detoxify/requirements.txt -r simple_moderation/requirements.txt -r quicksilver/requirements.txt -r django_dialog_engine_builder/requirements.txt -r django_dialog_engine/requirements.txt
             echo "Starting Django project..."
             django-admin startproject sm
             echo "Copying over packages..."
@@ -239,7 +239,7 @@ jobs:
             git clone https://github.com/audacious-software/Django-Dialog-Engine.git django_dialog_engine
             git clone https://github.com/audacious-software/Django-Dialog-Engine-Builder.git django_dialog_engine_builder
             git clone https://github.com/audacious-software/Simple-Moderation-Django.git simple_moderation
-            pip install -r simple_moderation_detoxify/requirements.txt simple_moderation/requirements.txt -r quicksilver/requirements.txt -r django_dialog_engine_builder/requirements.txt -r django_dialog_engine/requirements.txt
+            pip install -r simple_moderation_detoxify/requirements.txt -r simple_moderation/requirements.txt -r quicksilver/requirements.txt -r django_dialog_engine_builder/requirements.txt -r django_dialog_engine/requirements.txt
             echo "Starting Django project..."
             django-admin startproject sm
             echo "Copying over packages..."
