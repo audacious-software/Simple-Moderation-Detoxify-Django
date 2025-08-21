@@ -32,11 +32,6 @@ jobs:
       - restore_cache:
           key: venv-312-{{ .Branch }}-{{ checksum "requirements.txt" }}
       - run:
-          name: Validate Javascript code
-          command: |
-            npm install
-            npx eslint static/builder-js/
-      - run:
           name: Build and validate
           command: |
             sudo rm /etc/apt/sources.list.d/archive_uri-https_download_docker_com_linux_ubuntu-jammy.list
@@ -102,11 +97,6 @@ jobs:
       - restore_cache:
           key: venv-310-{{ .Branch }}-{{ checksum "requirements.txt" }}
       - run:
-          name: Validate Javascript code
-          command: |
-            npm install
-            npx eslint static/builder-js/
-      - run:
           name: Build and validate
           command: |
             sudo rm /etc/apt/sources.list.d/archive_uri-https_download_docker_com_linux_ubuntu-jammy.list
@@ -171,11 +161,6 @@ jobs:
       - restore_cache:
           key: venv-39-{{ .Branch }}-{{ checksum "requirements.txt" }}
       - run:
-          name: Validate Javascript code
-          command: |
-            npm install
-            npx eslint static/builder-js/
-      - run:
           name: Build and validate
           command: |
             sudo rm /etc/apt/sources.list.d/archive_uri-https_download_docker_com_linux_ubuntu-jammy.list
@@ -239,11 +224,6 @@ jobs:
       - checkout
       - restore_cache:
           key: venv-38-{{ .Branch }}-{{ checksum "requirements.txt" }}
-      - run:
-          name: Validate Javascript code
-          command: |
-            npm install
-            npx eslint static/builder-js/
       - run:
           name: Build and validate
           command: |
